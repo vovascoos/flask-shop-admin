@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавить товар</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Добавить товар</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Название" required>
+        <input type="text" name="category" placeholder="Категория">
+        <input type="number" name="price" placeholder="Цена" step="0.01">
+        <input type="file" name="image" accept="image/*">
+        <button type="submit">Добавить</button>
+    </form>
+    <a href="{{ url_for('index') }}">Назад</a>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Админка товаров</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Товары</h1>
+    <a href="{{ url_for('add_product') }}">Добавить товар</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Цена</th>
+            <th>Картинка</th>
+            <th>Действия</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.price }}</td>
+            <td><img src="{{ url_for('static', filename='uploads/' + product.image) }}" width="50"></td>
+            <td>
+                <a href="{{ url_for('edit_product', id=product.id) }}">Редактировать</a>
+                <a href="{{ url_for('delete_product', id=product.id) }}" onclick="return confirm('Точно?')">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
